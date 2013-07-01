@@ -19,11 +19,12 @@ public class Commandrealname extends EssentialsCommand
 	@Override
 	protected void run(final Server server, final CommandSender sender, final String commandLabel, final String[] args) throws Exception
 	{
-		if (args.length < 1)
-		{
-			throw new NotEnoughArgumentsException();
+		final String whois;
+		if (args.length == 0) {
+			whois = "";
+		} else {
+			whois = args[0].toLowerCase(Locale.ENGLISH);
 		}
-		final String whois = args[0].toLowerCase(Locale.ENGLISH);
 		boolean skipHidden = sender instanceof Player && !ess.getUser(sender).isAuthorized("essentials.vanish.interact");
 		boolean foundUser = false;
 		for (Player onlinePlayer : server.getOnlinePlayers())
